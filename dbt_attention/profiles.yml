@@ -1,0 +1,12 @@
+attention:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      port: 5435
+      user: postgres
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: attention
+      schema: analytics
+      threads: 2

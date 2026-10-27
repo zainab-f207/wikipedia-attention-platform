@@ -3,3 +3,5 @@ __pycache__/
 .env
 data/
 *.csv
+dbt_attention/target/
+dbt_attention/logs/

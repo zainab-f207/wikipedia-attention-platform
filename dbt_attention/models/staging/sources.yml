@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: edits
+        columns:
+          - name: event_id
+            data_tests:
+              - unique
+              - not_null
+      - name: pageviews_hourly
+        columns:
+          - name: page_title
+            data_tests:
+              - not_null

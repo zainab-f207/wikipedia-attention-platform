@@ -1,0 +1,12 @@
+name: attention
+version: "1.0.0"
+profile: attention
+model-paths: ["models"]
+test-paths: ["tests"]
+
+models:
+  attention:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
