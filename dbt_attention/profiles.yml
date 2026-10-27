@@ -3,8 +3,8 @@ attention:
   outputs:
     dev:
       type: postgres
-      host: localhost
-      port: 5435
+      host: "{{ env_var('PGHOST', 'localhost') }}"
+      port: "{{ env_var('PGPORT', '5435') | as_number }}"
       user: postgres
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
       dbname: attention

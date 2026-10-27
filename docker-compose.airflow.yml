@@ -1,0 +1,22 @@
+services:
+  airflow:
+    image: airflow-dbt:2.10.4
+    container_name: cap_airflow
+    command: standalone
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    mem_limit: 1800m
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:${POSTGRES_PASSWORD}@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__PARALLELISM: "2"
+      AIRFLOW__WEBSERVER__WORKERS: "1"
+      AIRFLOW__SCHEDULER__PARSING_PROCESSES: "1"
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGHOST: postgres
+      PGPORT: "5432"
+      DBT_PROFILES_DIR: /opt/airflow/dbt_attention
+      DBT_SEND_ANONYMOUS_USAGE_STATS: "false"
